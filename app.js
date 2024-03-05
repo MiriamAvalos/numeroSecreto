@@ -4,18 +4,17 @@ console.log(numeroSecreto);
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
-function asignarTextoElemento(elemento, texto){
-    let elementoHTML = document.querySelector(elemento);
-    elementoHTML.innerHTML= texto;
-    //esta función no retorna nada, solo asigna un valor al elemento HTML, pero es buena practica siempre poner return a las funciones.
-    return;
+function asignarTextoElemento(elemento, texto) {
+  let elementoHTML = document.querySelector(elemento);
+  elementoHTML.innerHTML = texto;
+  //esta función no retorna nada, solo asigna un valor al elemento HTML, pero es buena practica siempre poner return a las funciones.
+  return;
 }
 //llamamos a la funcion y se le asignan los valores a los parametros para cambiar el texto
-asignarTextoElemento("h1", "Juego del número secreto");
-asignarTextoElemento("p", "Indica un número del 1 al 100");
+asignarTextoElemento('h1', 'Juego del número secreto');
+asignarTextoElemento('p', 'Indica un número del 1 al 100');
 
 //función para generar el número secreto
-function generarNumeroSecreto(){
-    return Math.floor(Math.random()*10)+1;
+function generarNumeroSecreto() {
+  return Math.floor(Math.random() * 10) + 1;
 }
-
