@@ -1,6 +1,5 @@
 //todas las variables siempre van hasta arriba por buena practica y para que tengan alcance global
 let numeroSecreto = generarNumeroSecreto();
-console.log(numeroSecreto);
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
@@ -18,3 +17,16 @@ asignarTextoElemento('p', 'Indica un número del 1 al 100');
 function generarNumeroSecreto() {
   return Math.floor(Math.random() * 10) + 1;
 }
+
+//función para obtener el número que el usuario ingresa en el input
+function verificarIntento() {
+  let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
+  console.log(typeof(numeroDeUsuario));
+  console.log(typeof(numeroSecreto));
+  console.log(numeroSecreto);
+  console.log(numeroDeUsuario);
+  console.log(numeroSecreto === numeroDeUsuario);
+  return;
+}
+
+
