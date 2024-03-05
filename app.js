@@ -1,9 +1,14 @@
-//accedo al elemento(objeto) del DOM por medio de su selector y le asigno su valor a una variable para poder acceder a el
-let titulo = document.querySelector("h1");
+//funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
-titulo.innerHTML= "Juego del número secreto"
+function asignarTextoElemento(elemento, texto){
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML= texto;
+}
+//llamamos a la funcion y se le asignan los valores a los parametros para cambiar el texto
+asignarTextoElemento("h1", "Juego del número secreto");
+asignarTextoElemento("p", "Indica un número del 1 al 100");
 
-let parrafo = document.querySelector("p");
-parrafo.innerHTML= "Indica un número del 1 al 10"
 
+function intentoDeUsuario(){
 
+}
