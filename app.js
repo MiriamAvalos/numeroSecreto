@@ -1,5 +1,7 @@
 //todas las variables siempre van hasta arriba por buena practica y para que tengan alcance global
 let numeroSecreto = generarNumeroSecreto();
+//variable para almacenar el número de intentos
+let intentos = 1;
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
@@ -26,14 +28,17 @@ function verificarIntento() {
   console.log(numeroSecreto);
   //console.log(numeroDeUsuario);
   //console.log(numeroSecreto === numeroDeUsuario);
+  console.log(intentos);
   if(numeroSecreto === numeroDeUsuario){
-   asignarTextoElemento('p','¡Felicidades! Acertaste el número.');
+    //se utiliza template string y operador ternario dentro del parametro para dar mensaje al usuario sobre los intentos
+   asignarTextoElemento('p',`¡Felicidades! Acertaste el número en ${intentos} ${(intentos === 1) ? "intento." : "intentos."}`);
   } else {
     if(numeroDeUsuario > numeroSecreto){
       asignarTextoElemento('p','El número secreto es menor');
     } else {
       asignarTextoElemento('p','El número secreto es mayor');
     }
+    intentos++;
   }
   return;
 }
