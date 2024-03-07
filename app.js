@@ -32,6 +32,8 @@ function verificarIntento() {
   if(numeroSecreto === numeroDeUsuario){
     //se utiliza template string y operador ternario dentro del parametro para dar mensaje al usuario sobre los intentos
    asignarTextoElemento('p',`¡Felicidades! Acertaste el número en ${intentos} ${(intentos === 1) ? "intento." : "intentos."}`);
+   //se remueve el disabled del DOM en el botón "nuevo juego" para que se active el botón de nuevo juego
+   document.getElementById('reiniciar').removeAttribute('disabled');
   } else {
     //El usuario no acertó.
     if(numeroDeUsuario > numeroSecreto){
