@@ -1,7 +1,7 @@
-//todas las variables siempre van hasta arriba por buena practica y para que tengan alcance global
-let numeroSecreto = generarNumeroSecreto();
-//variable para almacenar el número de intentos
-let intentos = 1;
+//todas las variables siempre van hasta arriba por buena practica y para que tengan alcance global, la función condiciones inciales le dara el valor
+let numeroSecreto = 0;
+//variable para almacenar el número de intentos, la función condicionesIniciales le dara el valor
+let intentos = 0;
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
@@ -11,9 +11,7 @@ function asignarTextoElemento(elemento, texto) {
   //esta función no retorna nada, solo asigna un valor al elemento HTML, pero es buena practica siempre poner return a las funciones.
   return;
 }
-//llamamos a la funcion y se le asignan los valores a los parametros para cambiar el texto
-asignarTextoElemento('h1', 'Juego del número secreto');
-asignarTextoElemento('p', 'Indica un número del 1 al 10');
+
 
 //función para generar el número secreto
 function generarNumeroSecreto() {
@@ -47,6 +45,7 @@ function verificarIntento() {
     limpiarCaja();
   }
   return;
+}
 
   //función para limpiar cada cada que el usuario ingrese un numero para intentar adivinar
   function limpiarCaja() {
@@ -54,5 +53,29 @@ function verificarIntento() {
     document.querySelector('#valorUsuario').value = '';
     
   }
-}
+  //función para iniciar el juego con las condiciones iniciales
+  function condicionesIniciales() {
+    asignarTextoElemento('h1', 'Juego del número secreto');
+    asignarTextoElemento('p', 'Indica un número del 1 al 10');
+    //Generar el número aleatorio
+    numeroSecreto = generarNumeroSecreto();
+    //Inicializar el número de intentos
+    intentos = 1;
 
+  }
+
+  //función para reiniciar el juego
+  function reiniciarJuego() {
+    //limpiar caja
+    limpiarCaja();
+    //ejecutar la función con las condiciones iniciales del juego
+    condicionesIniciales();
+    //Deshabilitar el botón de nuevo juego
+    document.querySelector('#reiniciar').setAttribute('disabled','true');
+
+
+  }
+  
+
+//ejecutamos la funcion que tiene dentro la función a la que se asignan los valores a los parametros para cambiar el texto de inicio
+condicionesIniciales();
