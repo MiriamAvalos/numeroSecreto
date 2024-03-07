@@ -33,13 +33,24 @@ function verificarIntento() {
     //se utiliza template string y operador ternario dentro del parametro para dar mensaje al usuario sobre los intentos
    asignarTextoElemento('p',`¡Felicidades! Acertaste el número en ${intentos} ${(intentos === 1) ? "intento." : "intentos."}`);
   } else {
+    //El usuario no acertó.
     if(numeroDeUsuario > numeroSecreto){
       asignarTextoElemento('p','El número secreto es menor');
     } else {
       asignarTextoElemento('p','El número secreto es mayor');
     }
+    //aumenta el numero de intentos
     intentos++;
+    //se ejecuta la función para limpiar caja
+    limpiarCaja();
   }
   return;
+
+  //función para limpiar cada cada que el usuario ingrese un numero para intentar adivinar
+  function limpiarCaja() {
+    //querySelector también se puede usar para acceder a un id solamente hay que indicarselo con un # al inicio
+    document.querySelector('#valorUsuario').value = '';
+    
+  }
 }
 
