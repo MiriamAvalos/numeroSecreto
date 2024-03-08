@@ -4,6 +4,7 @@ let numeroSecreto = 0;
 let intentos = 0;
 //se crea una lista (array) para almacenar los numeros aleatorios que ya salieron para que no vuelvan a salir en  los juegos siguientes
 let listaNumerosSorteados = [];
+let numeroMaximo = 10;
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
@@ -18,10 +19,17 @@ function asignarTextoElemento(elemento, texto) {
 //función para generar el número secreto
 function generarNumeroSecreto() {
   //se almacena el numero aleatorio en una variable
-   let numeroGenerado = Math.floor(Math.random() * 10) + 1;
+   let numeroGenerado = Math.floor(Math.random() * numeroMaximo) + 1;
 
    console.log(numeroGenerado);
    console.log(listaNumerosSorteados);
+
+   //si ya sorteamos todos los números mostramos un mensaje en la pantalla
+   if (listaNumerosSorteados.length == numeroMaximo) {
+    asignarTextoElemento('p', 'Ya se sortearon todos los números posibles');
+
+   }else {
+    
    //si el numero generado esta incluido en la lista (el metodo incluides va a recorrer todo el array para verificar si el numero ya salio (ya existe))
    //y va a recibir como parametro el valor que va a revisar que seria el numero que se genero
    if (listaNumerosSorteados.includes(numeroGenerado)) {
@@ -32,6 +40,7 @@ function generarNumeroSecreto() {
     listaNumerosSorteados.push(numeroGenerado);
     return numeroGenerado;
    }
+  }
 }
 
 //función para obtener el número que el usuario ingresa en el input
@@ -72,7 +81,7 @@ function verificarIntento() {
   //función para iniciar el juego con las condiciones iniciales
   function condicionesIniciales() {
     asignarTextoElemento('h1', 'Juego del número secreto');
-    asignarTextoElemento('p', 'Indica un número del 1 al 10');
+    asignarTextoElemento('p', `Indica un número del 1 al ${numeroMaximo}`);
     //Generar el número aleatorio
     numeroSecreto = generarNumeroSecreto();
     //Inicializar el número de intentos
