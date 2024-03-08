@@ -2,6 +2,8 @@
 let numeroSecreto = 0;
 //variable para almacenar el número de intentos, la función condicionesIniciales le dara el valor
 let intentos = 0;
+//se crea una lista (array) para almacenar los numeros aleatorios que ya salieron para que no vuelvan a salir en  los juegos siguientes
+let listaNumerosSorteados = [];
 
 //funcion para acceder al elemento(objeto) del DOM por medio de su selector y asignar su valor a una variable para poder cambiar su valor
 //le asigno el valor al objeto mediante el metodo innerHTML
@@ -15,7 +17,21 @@ function asignarTextoElemento(elemento, texto) {
 
 //función para generar el número secreto
 function generarNumeroSecreto() {
-  return Math.floor(Math.random() * 10) + 1;
+  //se almacena el numero aleatorio en una variable
+   let numeroGenerado = Math.floor(Math.random() * 10) + 1;
+
+   console.log(numeroGenerado);
+   console.log(listaNumerosSorteados);
+   //si el numero generado esta incluido en la lista (el metodo incluides va a recorrer todo el array para verificar si el numero ya salio (ya existe))
+   //y va a recibir como parametro el valor que va a revisar que seria el numero que se genero
+   if (listaNumerosSorteados.includes(numeroGenerado)) {
+ // se llama a si misma la función (recursividad) para generar un nuevo numero aleatorio y comprobar si esta el numero, almacenarlo y todo el proceso
+    return generarNumeroSecreto();
+ // si el valor aun no sale en el juego entonces si admite el nuevo numero aleatorio y antes de que lo retorne lo guardamos en el arreglo para que no vuelva a salir
+   } else {
+    listaNumerosSorteados.push(numeroGenerado);
+    return numeroGenerado;
+   }
 }
 
 //función para obtener el número que el usuario ingresa en el input
@@ -23,10 +39,10 @@ function verificarIntento() {
   let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
   //console.log(typeof(numeroDeUsuario));
   //console.log(typeof(numeroSecreto));
-  console.log(numeroSecreto);
+  //console.log(numeroSecreto);
   //console.log(numeroDeUsuario);
   //console.log(numeroSecreto === numeroDeUsuario);
-  console.log(intentos);
+  //console.log(intentos);
   if(numeroSecreto === numeroDeUsuario){
     //se utiliza template string y operador ternario dentro del parametro para dar mensaje al usuario sobre los intentos
    asignarTextoElemento('p',`¡Felicidades! Acertaste el número en ${intentos} ${(intentos === 1) ? "intento." : "intentos."}`);
